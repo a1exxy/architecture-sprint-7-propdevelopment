@@ -1,0 +1,21 @@
+# Среда для разработки
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+# Среда для тестирование
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test
+
+
+# Среда для продуктива
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod  

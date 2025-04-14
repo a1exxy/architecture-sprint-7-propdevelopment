@@ -1,0 +1,96 @@
+
+# admin
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: admin
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+
+
+# auditor
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: auditor
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["get", "list", "watch"]
+
+
+
+# viewer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: viewer
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["get", "list", "watch"]
+
+
+# developer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: dev
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: test
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["*"]
+
+
+# devops
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: devops
+  namespace: dev
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["*"]
+
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: devops
+  namespace: test
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: devops
+  namespace: prod
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "services", "deployments", "configmaps", "namespaces"]
+  verbs: ["*"]

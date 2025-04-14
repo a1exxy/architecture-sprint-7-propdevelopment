@@ -1,0 +1,40 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_LEFT_RIGHT()
+title Диаграмма контекста
+
+Person(client, "Клиент")
+Person(owner, "Собственник")
+
+System_Ext(saas1, "Интеллектуальный домофон и шлагбаум", "Software System")
+System_Ext(iot, "IOT Устройства", "Software System")
+System_Ext(pay, "Платёжная система", "Software System")
+System_Ext(gov, "Государственные регистрационные органы", "Software System")
+System_Ext(prov1, "Поставщики ресурсов ЖКХ", "Software System")
+
+System_Boundary("com", "Компания PropDevelopment"){
+    Container(sys, "PropDevelopment System", "Software System", "")
+
+    Boundary(emp, "Сотрудники компании"){
+        Person(admin, "Administrator")
+        Person(mgm, "Менеджер")
+        Person(b_anal, "Бизнес-аналитик")
+        Person(acc, "Бухгалтер")
+        Person(bi, "Аналитик BI")
+        Rel(admin, sys, "")
+        Rel(mgm, sys, "")
+        Rel(b_anal, sys, "")
+        Rel(bi, sys, "")
+        Rel(acc, sys, "")
+    }
+}
+Rel(client, sys, "")
+Rel(owner, sys, "")
+Rel(saas1, sys, "")
+Rel(iot, sys, "")
+Rel(pay, sys, "")
+Rel(prov1, sys, "")
+Rel(gov, sys, "")
+
+SHOW_LEGEND()
+@enduml
